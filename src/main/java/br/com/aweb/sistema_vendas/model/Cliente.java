@@ -14,9 +14,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.ArrayList;
-import java.util.List;
-import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "clientes")
