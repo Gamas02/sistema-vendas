@@ -2,20 +2,16 @@ package br.com.aweb.sistema_vendas.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import jakarta.validation.constraints.NotNull;
@@ -36,26 +32,20 @@ public class Pedido {
     private Long version;
 
     @NotNull(message = "Cliente é obrigatório")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @Column(nullable = false)
     private LocalDateTime dataPedido;
 
-    @Column(nullable = false)
-    private BigDecimal valorTotal;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
-    private StatusPedido status;
-
-    // cascade: propaga salvar/atualizar/excluir para os itens.
-    // orphanRemoval: remove automaticamente itens que saírem da lista.
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemPedido> itens = new ArrayList<>();
+    @NotNull(message = "Valor total é obrigatório")
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal valorTotal = BigDecimal.ZERO;
 
     public Pedido(Cliente cliente) {
+        Objects.requireNonNull(cliente, "Cliente não pode ser nulo");
         this.cliente = cliente;
+        this.dataPedido = LocalDateTime.now();
     }
 }
