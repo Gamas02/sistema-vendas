@@ -1,0 +1,11 @@
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\controller\ClienteController.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\controller\ProdutoController.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\model\Cliente.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\model\Pedido.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\model\Produto.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\repository\ClienteRepository.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\repository\PedidoRepository.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\repository\ProdutoRepository.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\service\ClienteService.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\service\ProdutoService.java
+C:\Users\46292236811\sistema-vendas\src\main\java\br\com\aweb\sistema_vendas\SistemaVendasApplication.java
