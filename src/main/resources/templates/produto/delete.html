@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Excluir Produto</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+<div th:replace="~{fragments/menu :: menu}"></div>
 <div class="container mt-4">
     <h1>Excluir Produto</h1>
 
@@ -29,7 +30,7 @@
         <tr>
             <th>Quantidade em Estoque</th>
             <td th:text="${produto.quantidadeEmEstoque}"></td>
-        </tr>        
+        </tr>
     </table>
 
     <form th:action="@{/produtos/delete/{id}(id=${produto.id})}" method="post">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title th:unless="${produto.id == null}">Edição de Produto</title>
@@ -8,6 +8,7 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+<div th:replace="~{fragments/menu :: menu}"></div>
 <div class="container mt-5">
     <h2 th:text="${produto.id == null} ? 'Novo Produto' : 'Editar Produto'"></h2>
     <form th:action="@{${produto.id == null} ? '/produtos/novo' : '/produtos/edit/' + ${produto.id}}" th:object="${produto}" method="post">
@@ -33,7 +34,7 @@
             <label for="quantidadeEmEstoque" class="form-label">Quantidade em Estoque</label>
             <input type="number" class="form-control" id="quantidadeEmEstoque" th:field="*{quantidadeEmEstoque}">
             <div class="text-danger" th:if="${#fields.hasErrors('quantidadeEmEstoque')}" th:errors="*{quantidadeEmEstoque}"></div>
-        </div>        
+        </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a th:href="@{/produtos}" class="btn btn-secondary">Cancelar</a>

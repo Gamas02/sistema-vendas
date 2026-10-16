@@ -1,11 +1,20 @@
+# ---------- Build ----------
 FROM maven:3.9-eclipse-temurin-25 AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn -DskipTests clean package
 
+COPY pom.xml .
+RUN mvn -B dependency:go-offline
+
+COPY src ./src
+RUN mvn -B clean package -DskipTests
+
+# ---------- Runtime ----------
 FROM eclipse-temurin:25-jre
 WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
+
+# O Render injeta a variável PORT; a aplicação lê server.port=${PORT:8080}
 EXPOSE 8080
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
